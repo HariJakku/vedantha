@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Optional: Adjust icon size and color */
+        .icon {
+            font-size: 24px;
+            color: rgb(1, 1, 77);
+        }
+
+        .back-button {
+            position: bottom;
+            background-color: rgb(83, 4, 119);
+            border-radius: 10px;
+            width: 150px;
+            height: 50px;
+        }
+
+        .button:hover {
+            background-color: gray;
+            color: white;
+        }
+
+        footer {
+            background-color: #0789bd;
+            /* Background color for the footer */
+            color: white;
+            /* Text color for the footer */
+            padding: -0.1px;
+            /* Add padding to provide space around the text */
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+            border: 2px solid black;
+            border-radius: 10px;
+            margin: 20px;
+        }
+
+        .field {
+            flex: 1;
+            padding: 10px;
+            text-align: center;
+            border-right: 1px solid black;
+            /* Add border to the right of each field */
+        }
+
+        .number-display {
+            font-size: 30px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+
+<body>
+    <center>
+        <h1 style="background-color:#460ea0; color:white;">ABOUT US</h1>
+    </center>
+    <div class="container">
+        <div class="left-image">
+            <img src="vedlogo.jpg" alt="Image" width="200px">
+        </div>
+        <div class="field" id="section1">
+            <p id="eapcetNumberDisplay" class="number-display">EAPCET Cracked Students 1+</p>
+        </div>
+        <div class="field" id="section3">
+            <p id="jeeNumberDisplay" class="number-display">JEE Cracked Students 1+</p>
+        </div>
+        <div class="field" id="section4">
+            <p id="neetNumberDisplay" class="number-display">NEET Cracked Students 1+</p>
+        </div>
+        <div class="field" id="totalStudentsDisplay">
+            <p class="number-display">Total Students Till Now 1+</p>
+        </div>
+    </div>
+
+    <script>
+        // Set the target numbers
+        const targetNumbers = {
+            eapcet: 100,
+            jee: 10,
+            neet: 4,
+            totalStudents: 1000 // Set the total students target number
+        };
+
+        // Function to increment the number and update the display
+        function incrementNumber(sectionId, targetNumber) {
+            const numberDisplay = document.getElementById(sectionId);
+            let currentNumber = parseInt(numberDisplay.textContent.split(" ")[3]);
+
+            // Check if the current number is less than the target number
+            if (currentNumber < targetNumber) {
+                currentNumber++;
+                numberDisplay.textContent = numberDisplay.textContent.split(" ")[0] + " " + numberDisplay.textContent.split(" ")[1] + " " + numberDisplay.textContent.split(" ")[2] + " " + currentNumber + "+";
+                // Call the function recursively after a short delay
+                setTimeout(() => incrementNumber(sectionId, targetNumber), 50);
+            }
+        }
+
+        // Function to increment total students count
+        function incrementTotalStudents() {
+            const totalStudentsDisplay = document.getElementById('totalStudentsDisplay').firstElementChild;
+            let totalStudentsCount = parseInt(totalStudentsDisplay.textContent.split(" ")[4]);
+
+            // Check if the current total students count is less than the target
+            if (totalStudentsCount < targetNumbers.totalStudents) {
+                totalStudentsCount++;
+                totalStudentsDisplay.textContent = "Total Students Till Now " + totalStudentsCount + "+";
+                // Call the function recursively after a short delay
+                setTimeout(incrementTotalStudents, 50);
+            }
+        }
+
+        // Call the function initially to start the incrementing process for each section
+        incrementNumber("eapcetNumberDisplay", targetNumbers.eapcet);
+        incrementNumber("jeeNumberDisplay", targetNumbers.jee);
+        incrementNumber("neetNumberDisplay", targetNumbers.neet);
+
+        // Call the function initially to start incrementing total students count
+        incrementTotalStudents();
+    </script>
+
+    <h2 style="color:rgb(206, 4, 196)"><i>SALIENT FEATURES OF VEDANTHA:</i></h2>
+    <ul>
+        <li>
+            <h3>Pre planned Study Material</h3>
+        </li>
+        <li>
+            <h3>Domain Wise Weekly Tests
+        </li>
+        </h3>
+        <li>
+            <h3>AC Class Rooms for JEE and NEET Students </h3>
+        </li>
+        <li>
+            <h3>CC Camera Surveillance</h3>
+        </li>
+        <li>
+            <h3>Counselling Hours With Micro Level Analysis</h3>
+        </li>
+        <li>
+            <h3>Special Attention Towards Slow Learners</h3>
+        </li>
+        <li>
+            <h3>Seperate Hostel Facilities For Boys And Girls</h3>
+        </li>
+        <h3 style="color:crimson">Gulmohar Girls Hostel</h3>
+        <h3 style="color:crimson">Vedantha Boys Hostel</h3>
+    </ul><br></br>
+    <h2 style="color:rgb(206, 4, 196)"><i>CONTACT INFORMATION:</i></h2>
+    <P>
+    <h3><i class="fas fa-map-marker ;"></i>
+        . Vedantha Junior College,
+        Parvathipuram Manyam(District)
+        Andhrapradesh
+        535501
+    </h3>
+    </P>
+    <P>
+    <h3><i class="fas fa-phone-alt ;"></i>
+        . 9490927927 || 9492769545 ||
+        8919406926 || 8498813114
+    </h3>
+    </P>
+    <P>
+    <h3><i class="fas fa-envelope ;"></i>
+        . vedanthajuniorcollege@gmail.com
+    </h3>
+    </P>
+
+    <div><a href="ved1.html"><button class="button back-button"><i class="fas fa-arrow-left"></i><b> Back</b>
+            </button></a>
+    </div>
+    <center>
+        <footer>
+            <p>&copy; 2024 Vedanta Junior College. All rights reserved.</p>
+            <h4 style="color:rgb(243, 231, 58)">Designed By ~ KumarSwami Jakku(Vedanthi'an)</h4>
+
+        </footer>
+    </center>
+</body>
+
+</html>

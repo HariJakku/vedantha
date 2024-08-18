@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News & Events</title>
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            background-color: #460ea0;
+            color: white;
+            padding: 10px;
+        }
+
+        .slider {
+            width: 100%;
+            /* Set to 100% for responsive behavior */
+            max-width: 600px;
+            /* Optional: max width */
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin: auto;
+            /* Center the slider */
+            position: relative;
+            /* Position relative for absolute buttons */
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            /* Smooth transition */
+        }
+
+        .slide {
+            width: 100%;
+            /* Each slide takes full width */
+            flex-shrink: 0;
+        }
+
+        .slide img {
+            width: 100%;
+            /* Set to 100% for responsive behavior */
+            height: auto;
+            /* Maintain aspect ratio */
+            max-height: 400px;
+            /* Limit max height to fit the screen */
+            display: block;
+            border-radius: 10px;
+        }
+
+        .button-container {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .prev,
+        .next {
+            background-color: rgba(83, 4, 119, 0.8);
+            border: none;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+            user-select: none;
+            transition: background-color 0.3s;
+            font-size: 30px;
+            /* Increase size of symbols */
+        }
+
+        .prev:hover,
+        .next:hover {
+            background-color: rgba(83, 4, 119, 1);
+        }
+
+        .back-button {
+            background-color: rgb(83, 4, 119);
+            border-radius: 10px;
+            width: 150px;
+            height: 50px;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: gray;
+            color: white;
+        }
+
+        footer {
+            background-color: #0789bd;
+            color: white;
+            padding: 10px;
+            /* Set padding to a positive value */
+            text-align: center;
+            /* Center footer text */
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <h1>NEWS & EVENTS</h1>
+    </center>
+    <div class="slider">
+        <div class="slides">
+            <div class="slide"><img src="p1.jpg" alt="Image 1"></div>
+            <div class="slide"><img src="p2.jpg" alt="Image 2"></div>
+            <div class="slide"><img src="p3.jpg" alt="Image 3"></div>
+            <div class="slide"><img src="p4.jpg" alt="Image 4"></div>
+            <div class="slide"><img src="p5.jpg" alt="Image 5"></div>
+            <div class="slide"><img src="p6.jpg" alt="Image 6"></div>
+            <div class="slide"><img src="p7.jpg" alt="Image 7"></div>
+            <div class="slide"><img src="p8.jpg" alt="Image 8"></div>
+            <div class="slide"><img src="p9.jpg" alt="Image 9"></div>
+            <div class="slide"><img src="p10.jpg" alt="Image 10"></div>
+            <div class="slide"><img src="p11.jpg" alt="Image 10"></div>
+
+        </div>
+        <div class="button-container">
+            <button class="prev" onclick="moveSlide(-1)">&lt;</button> <!-- Left arrow -->
+            <button class="next" onclick="moveSlide(1)">&gt;</button> <!-- Right arrow -->
+        </div>
+    </div>
+
+    <div style="text-align: center; margin: 20px;">
+        <a href="ved1.html">
+            <button class="button back-button"><b>Back</b></button>
+        </a>
+    </div>
+
+
+    <script>
+        let currentIndex = 0; // Current slide index
+        const slides = document.querySelectorAll('.slide'); // Get all slides
+        const totalSlides = slides.length; // Total number of slides
+        let autoSlideInterval; // Variable to hold the auto slide interval
+
+        // Function to show the current slide
+        function showSlide(index) {
+            const slideContainer = document.querySelector('.slides');
+            slideContainer.style.transform = `translateX(-${index * 100}%)`; // Move the slide container
+        }
+
+        // Function to go to the next slide
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % totalSlides; // Move to the next slide
+            showSlide(currentIndex);
+        }
+
+        // Function to go to the previous slide
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides; // Move to the previous slide
+            showSlide(currentIndex);
+        }
+
+        // Function to move the slide based on button click
+        function moveSlide(direction) {
+            clearInterval(autoSlideInterval); // Stop auto sliding when manual control is used
+            if (direction === 1) {
+                nextSlide();
+            } else {
+                prevSlide();
+            }
+            startAutoSlide(); // Restart auto sliding
+        }
+
+        // Set interval to change slides every 3 seconds
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(nextSlide, 3000); // Change slide every 3000ms (3 seconds)
+        }
+
+        // Start auto slide on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            startAutoSlide();
+        });
+    </script>
+</body>
+
+</html>

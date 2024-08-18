@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VEDANTHA JUNIOR COLLEGE</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Include Font Awesome library -->
+
+    <style media="screen">
+        .map {
+            background-image: linear-gradient(to right, dodgerblue, darkblue);
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #2e0372;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        nav {
+            background-color: #012758;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        nav ul li button {
+            background-color: #011f0b;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+
+
+
+        @keyframes rotateIcon {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        /* Icon hover effect */
+        nav ul li button .fa-icon:hover {
+            font-size: 24px;
+            /* Adjust the size as needed */
+        }
+
+        /* Enlarged icon effect */
+        .enlarged-icons-container {
+            text-align: center;
+        }
+
+        .enlarged-icons-container a {
+            display: inline-block;
+            margin: 50px;
+        }
+
+        .enlarge-icon {
+            font-size: 30px;
+            /* Initial size */
+            transition: font-size 0.3s ease;
+            color: black;
+            /* Add smooth transition */
+        }
+
+        .enlarge-icon:hover {
+            font-size: 68px;
+            color: gray;
+            /* Adjust the size as needed */
+        }
+
+        .message-container {
+            text-align: center;
+            margin-top: 50px;
+            /* Adjust the top margin as needed */
+        }
+
+
+
+        .indented-text {
+            text-indent: 80px;
+        }
+
+        footer {
+            background-color: #0789bd;
+            /* Background color for the footer */
+            color: white;
+            /* Text color for the footer */
+            padding: -0.1px;
+            /* Add padding to provide space around the text */
+        }
+
+
+        /* Optional: Adjust icon size and color */
+        .icon {
+            font-size: 24px;
+            color: rgb(1, 1, 77);
+        }
+
+
+
+
+
+
+
+        .container {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+            border: 2px solid black;
+            border-radius: 10px;
+            margin: 20px;
+        }
+
+        .field {
+            flex: 1;
+            padding: 10px;
+            text-align: center;
+            border-right: 1px solid black;
+            /* Add border to the right of each field */
+        }
+
+        .number-display {
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .indented-text {
+            text-indent: 120px;
+        }
+
+        .highlight {
+            color: crimson;
+            background-color: rgb(233, 199, 29);
+        }
+
+
+        .slider {
+            width: 100%;
+            /* Set to 100% for responsive behavior */
+            max-width: 600px;
+            /* Optional: max width */
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin: auto;
+            /* Center the slider */
+            position: relative;
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            width: 100%;
+            /* Each slide takes full width */
+            flex-shrink: 0;
+        }
+
+        .slide img {
+            width: 100%;
+            /* Set to 100% for responsive behavior */
+            height: auto;
+            /* Maintain aspect ratio */
+            max-height: 400px;
+            /* Limit max height to fit the screen */
+            display: block;
+            border-radius: 10px;
+
+        }
+
+
+        .prev,
+        .next {
+            background-color: rgba(83, 4, 119, 0.8);
+            border: none;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+            user-select: none;
+            transition: background-color 0.3s;
+            font-size: 30px;
+            box-sizing: border-box;
+            /* Increase size of symbols */
+        }
+
+        .prev:hover,
+        .next:hover {
+            background-color: rgba(83, 4, 119, 1);
+        }
+
+        .arrow {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .contact {
+            background-color: black;
+            color: white;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img src="vedname.jpeg" alt="Logo" style="height: 100px; width: 1300px; margin-left: 20px;">
+        <h1>VEDANTHA JUNIOR COLLEGE</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#about"><button><i class="fas fa-info-circle fa-icon"></i> About Us</button></a>
+            </li>
+            <li><a href="#course"><button><i class="fas fa-book-reader fa-icon"></i> Courses</button></a>
+            </li>
+
+            <li><a href="#admissions"><button><i class="fas fa-university fa-icon"></i>
+                        Admissions</button></a>
+            <li><a href="vedfaculty.html"><button><i class="fas fa-chalkboard-teacher fa-icon"></i> Staff</button></a>
+            </li>
+            </li>
+            <li><a href="vedmaterial.html"><button><i class="fas fa-file-alt fa-icon"></i> Material</button></li></a>
+            <li><a href="#newsevents"><button><i class="fas fa-music fa-icon"></i> News & Events</button></li>
+            </a>
+            <li><a href="vedalumni.html"><button><i class="fas fa-graduation-cap fa-icon"></i> Alumni</button></li></a>
+
+        </ul>
+    </nav>
+
+    <h4 style="color:crimson"><i>CHIEF MENTOR'S MESSAGE:</i></h4>
+    <p class="indented-text">~Dr.Penta Apparao</p>
+    <p>
+    <h5 style="font-family:verdana; color:rgb(42, 1, 90)"> As a person from a low middle-class family I would like to
+        do
+        something to
+        my
+        area students who wished to
+        get
+        quality education. Unfortunately, they are not financially strong enough to join in corporate colleges in
+        and
+        around Visakhapatnam. For this we established an educational society named on PENTA SOBHA SRI MEMORIAL
+        EDUCTIONAL SOCIETY in 2020.</h5>
+    </p>
+
+    <p>
+    <h5 style="font-family:verdana; color:rgb(42, 1, 90)">Under the society we started a Junior college which is named
+        as VEDANTHA JUNIOR COLLEGE in the Academic year
+        2020-2021 with a strength of - 232. We were very happy about our first batch students. Our motto
+        is to encourage the student who belongs to rural cultivated family. In this regard we started a special
+        programme (IIT-JEE, NEET and EAPCET) with low cost fee.</h5>
+    </p>
+
+    <p>
+    <h5 style="font-family:verdana; color:rgb(42, 1, 90)">In this way some of my friends came forward to support the
+        students financially. They are from Teachers
+        community, Doctors, Business people. On the other hand, we too decided to do something to poor students to
+        join
+        our college from JATTU ASRAM to take free education.</h5>
+    </p><br>
+
+    <center>
+        <h1 style=" color:#460ea0;" id="about">ABOUT US</h1>
+    </center>
+    <div class="container">
+        <div class="left-image">
+            <img src="vedlogo.jpg" alt="Image" width="200px">
+        </div>
+        <div class="field" id="section1">
+            <p id="eapcetNumberDisplay" class="number-display">EAPCET Cracked Students 1+</p>
+        </div>
+        <div class="field" id="section3">
+            <p id="jeeNumberDisplay" class="number-display">JEE Cracked Students 1+</p>
+        </div>
+        <div class="field" id="section4">
+            <p id="neetNumberDisplay" class="number-display">NEET Cracked Students 1+</p>
+        </div>
+        <div class="field" id="totalStudentsDisplay">
+            <p class="number-display">Total Students Till Now 1+</p>
+        </div>
+    </div>
+
+    <script>
+        // Set the target numbers
+        const targetNumbers = {
+            eapcet: 100,
+            jee: 10,
+            neet: 4,
+            totalStudents: 1000 // Set the total students target number
+        };
+
+        // Function to increment the number and update the display
+        function incrementNumber(sectionId, targetNumber) {
+            const numberDisplay = document.getElementById(sectionId);
+            let currentNumber = parseInt(numberDisplay.textContent.split(" ")[3]);
+
+            // Check if the current number is less than the target number
+            if (currentNumber < targetNumber) {
+                currentNumber++;
+                numberDisplay.textContent = numberDisplay.textContent.split(" ")[0] + " " + numberDisplay.textContent.split(" ")[1] + " " + numberDisplay.textContent.split(" ")[2] + " " + currentNumber + "+";
+                // Call the function recursively after a short delay
+                setTimeout(() => incrementNumber(sectionId, targetNumber), 50);
+            }
+        }
+
+        // Function to increment total students count
+        function incrementTotalStudents() {
+            const totalStudentsDisplay = document.getElementById('totalStudentsDisplay').firstElementChild;
+            let totalStudentsCount = parseInt(totalStudentsDisplay.textContent.split(" ")[4]);
+
+            // Check if the current total students count is less than the target
+            if (totalStudentsCount < targetNumbers.totalStudents) {
+                totalStudentsCount++;
+                totalStudentsDisplay.textContent = "Total Students Till Now " + totalStudentsCount + "+";
+                // Call the function recursively after a short delay
+                setTimeout(incrementTotalStudents, 50);
+            }
+        }
+
+        // Call the function initially to start the incrementing process for each section
+        incrementNumber("eapcetNumberDisplay", targetNumbers.eapcet);
+        incrementNumber("jeeNumberDisplay", targetNumbers.jee);
+        incrementNumber("neetNumberDisplay", targetNumbers.neet);
+
+        // Call the function initially to start incrementing total students count
+        incrementTotalStudents();
+    </script>
+
+    <h2 style="color:rgb(206, 4, 196)"><i>SALIENT FEATURES OF VEDANTHA:</i></h2>
+    <ul>
+        <li>
+            <h3>Pre planned Study Material</h3>
+        </li>
+        <li>
+            <h3>Domain Wise Weekly Tests
+        </li>
+        </h3>
+        <li>
+            <h3>AC Class Rooms for JEE and NEET Students </h3>
+        </li>
+        <li>
+            <h3>CC Camera Surveillance</h3>
+        </li>
+        <li>
+            <h3>Counselling Hours With Micro Level Analysis</h3>
+        </li>
+        <li>
+            <h3>Special Attention Towards Slow Learners</h3>
+        </li>
+        <li>
+            <h3>Seperate Hostel Facilities For Boys And Girls</h3>
+        </li>
+        <h3 style="color:crimson">Gulmohar Girls Hostel</h3>
+        <h3 style="color:crimson">Vedantha Boys Hostel</h3>
+    </ul><br></br>
+
+    <center>
+        <h1 style=" color:#2e0372;" id="course">COURSES</h1>
+    </center>
+    <ul>
+        <li>
+            <h3>MPC-(Mathematics,Physics,Chemistry)</h3>
+        </li>
+
+        <h4 style="color:rgb(198, 59, 28)">IPE with IIT-JEE : <mark class="highlight">TESLA BATCH</mark> </h4>
+        <h4 style="color:rgb(198, 59, 28)">IPE with EAPCET</h4>
+
+        <li>
+            <h3>BiPC-(Botany,Zoology,Physics,Chemistry)
+        </li>
+
+        <h4 style="color:rgb(198, 59, 28)">IPE with NEET</h4>
+
+
+        <h4 style="color:rgb(198, 59, 28)">IPE with EAPCET</h4>
+
+
+        <li>
+            <h3>CEC-(Civics,Economics,Commerce)</h3>
+        </li>
+        <li>
+            <h3>HEC-(History,Economics,Civics)</h3>
+        </li>
+        <li>
+            <h3>MEC-(Mathematics,Economics,Commerce)</h3>
+        </li>
+    </ul>
+
+    <center>
+        <h1 style=" color:#2e0372;" id="admissions">ADMISSIONS</h1>
+    </center>
+
+    <center>
+        <h3> ADMISSION FORM </h3>
+        <form action="includes/formhandler.inc.php" method="post">
+            <div>
+                <i class="fas fa-user"></i>
+                <input type="text" name="name" placeholder="Name"><br><br>
+            </div>
+            <div>
+                <i class="fas fa-address-card"></i>
+                <input type="text" name="address" placeholder="Address"><br><br>
+            </div>
+            <div>
+                <i class="fas fa-phone"></i>
+                <input type="text" name="phone" placeholder="Phone"><br><br>
+            </div>
+            <div>
+                <i class="fas fa-envelope"></i>
+                <input type="text" name="email" placeholder="Email"><br><br>
+            </div>
+            <button>Submit</button>
+        </form>
+    </center>
+
+
+
+
+
+
+    <center>
+        <h1 style="color:#2e0372" id="newsevents">NEWS & EVENTS</h1>
+    </center>
+    <div class="slider">
+        <div class="slides">
+            <div class="slide"><img src="p1.jpg" alt="Image 1"></div>
+            <div class="slide"><img src="p2.jpg" alt="Image 2"></div>
+            <div class="slide"><img src="p3.jpg" alt="Image 3"></div>
+            <div class="slide"><img src="p4.jpg" alt="Image 4"></div>
+            <div class="slide"><img src="p5.jpg" alt="Image 5"></div>
+            <div class="slide"><img src="p6.jpg" alt="Image 6"></div>
+            <div class="slide"><img src="p7.jpg" alt="Image 7"></div>
+            <div class="slide"><img src="p8.jpg" alt="Image 8"></div>
+            <div class="slide"><img src="p9.jpg" alt="Image 9"></div>
+            <div class="slide"><img src="p10.jpg" alt="Image 10"></div>
+            <div class="slide"><img src="p11.jpg" alt="Image 10"></div>
+
+        </div>
+        <div class="arrow">
+            <button class="prev" onclick="moveSlide(-1)">&lt;</button> <!-- Left arrow -->
+            <button class="next" onclick="moveSlide(1)">&gt;</button> <!-- Right arrow -->
+        </div>
+    </div>
+
+
+
+
+    <script>
+        let currentIndex = 0; // Current slide index
+        const slides = document.querySelectorAll('.slide'); // Get all slides
+        const totalSlides = slides.length; // Total number of slides
+        let autoSlideInterval; // Variable to hold the auto slide interval
+
+        // Function to show the current slide
+        function showSlide(index) {
+            const slideContainer = document.querySelector('.slides');
+            slideContainer.style.transform = `translateX(-${index * 100}%)`; // Move the slide container
+        }
+
+        // Function to go to the next slide
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % totalSlides; // Move to the next slide
+            showSlide(currentIndex);
+        }
+
+        // Function to go to the previous slide
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides; // Move to the previous slide
+            showSlide(currentIndex);
+        }
+
+        // Function to move the slide based on button click
+        function moveSlide(direction) {
+            clearInterval(autoSlideInterval); // Stop auto sliding when manual control is used
+            if (direction === 1) {
+                nextSlide();
+            } else {
+                prevSlide();
+            }
+            startAutoSlide(); // Restart auto sliding
+        }
+
+        // Set interval to change slides every 3 seconds
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(nextSlide, 3000); // Change slide every 3000ms (3 seconds)
+        }
+
+        // Start auto slide on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            startAutoSlide();
+        });
+    </script>
+
+    <div class="contact">
+        <p>&nbsp;</p>
+        <h2 style="color:rgb(206, 4, 196)"><i>CONTACT INFORMATION:</i></h2>
+        <P>
+        <h3><i class="fas fa-map-marker ;" style="color:yellow"></i>
+            . Vedantha Junior College,
+            Parvathipuram Manyam(District)
+            Andhrapradesh
+            535501
+        </h3>
+        </P>
+        <P>
+        <h3><i class="fas fa-phone-alt ;" style="color:yellow"></i>
+            . 9490927927 || 9492769545 ||
+            8919406926 || 8498813114
+        </h3>
+        </P>
+        <P>
+        <h3><i class="fas fa-envelope ;" style="color:yellow"></i>
+            . vedanthajuniorcollege@gmail.com
+        </h3>
+        </P>
+        <p>&nbsp;</p>
+
+
+        <h2 style="color:rgb(206, 4, 196)">Quick Links:</h2>
+        <a href="vedfaculty.html"><button style="height:30px;width:100px;"><i
+                    class="fas fa-chalkboard-teacher fa-icon"></i>
+                Staff</button></a><br><br>
+        <a href="vedmaterial.html"><button style="height:30px;width:100px;"><i class="fas fa-file-alt fa-icon"></i>
+                Material</button></a><br><br>
+        <a href="vednewsevents.html"><button style="height:30px;width:100px;"><i class="fas fa-music fa-icon"></i> News
+                &
+                Events</button></a><br><br>
+        <a href="vedalumni.html"><button style="height:30px;width:100px;"><i class="fas fa-graduation-cap fa-icon"></i>
+                Alumni</button></a><br><br>
+    </div>
+
+    <div class="map">
+        <center>
+            <h1 style="color:lawngreen;">
+                Vedantha Junior College
+            </h1>
+
+            <div>
+                <!-- Google Map Copied Code -->
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3777.6308895996694!2d83.41833987424496!3d18.770017282372564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a3b772d4b352d4d%3A0xbbd10b5cec7496a4!2svedantha%20college!5e0!3m2!1sen!2sin!4v1723387703811!5m2!1sen!2sin"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                    width="400"
+                    height="300"
+                    frameborder="0"
+                    style="border:0;"
+                    allowfullscreen=""
+                    aria-hidden="false"
+                    tabindex="0">
+                </iframe>
+            </div>
+        </center>
+    </div>
+
+
+    <center>
+        <footer>
+            <p>
+            <h4>&copy; 2024 Vedanta Junior College. All rights reserved.</h4>
+            </p>
+            <h5>Designed By ~ KumarSwami Jakku(Vedanthi'an)</h5>
+        </footer>
+    </center>
+</body>
+
+</html>
